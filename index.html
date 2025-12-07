@@ -1,0 +1,334 @@
+<!--
+Project: ChandraDas Personal Portfolio
+Files included below as separate sections:
+- index.html
+- styles.css
+- script.js
+
+Instructions: Copy each section into its own file (index.html, styles.css, script.js) and open index.html in a browser.
+This project uses vanilla HTML, CSS and JavaScript only. No frameworks.
+-->
+
+<!-- =================== index.html =================== -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHANDARADS.PV — Full Stack Java Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Grid Background -->
+  <div class="background-container">
+    <div class="grid-pattern"></div>
+    <div class="vignette-overlay"></div>
+  </div>
+
+  <!-- Floating Centered Navbar -->
+  <header class="floating-nav-container">
+    <nav class="floating-nav">
+      <div class="nav-logo">
+        <a href="#" class="brand">CPV</a>
+      </div>
+      
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn-nav">Book a call</a>
+        <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <button class="close-menu" id="close-menu">&times;</button>
+        <ul class="mobile-links">
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#skills" class="mobile-link">Skills</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1 class="name">
+            <span id="typewriter-text"></span><span class="cursor">|</span>
+          </h1>
+          <p class="title">Aspiring Full Stack Java Developer</p>
+          <p class="hero-intro" id="hero-intro">Highly motivated B.Tech graduate in Artificial Intelligence & Data Science — building scalable, performant applications using Java, Spring Boot, Hibernate and modern frontend tools.</p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#projects">View My Work</a>
+            <a class="btn ghost" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="code-block-wrapper">
+            <div class="code-block-3d">
+              <div class="code-header">
+                <div class="window-controls">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="filename">DummyComponent.jsx</span>
+              </div>
+              <pre class="code-content"><code><span class="keyword">const</span> <span class="component">DummyComponent</span> = () => {
+  <span class="keyword">const</span> [count, setCount] = React.<span class="function">useState</span>(0);
+ 
+  <span class="keyword">const</span> <span class="function">handleClick</span> = () => {
+    <span class="function">setCount</span>(prev => prev + 1);
+  };
+ 
+  <span class="keyword">return</span> (
+    &lt;<span class="tag">div</span> className=<span class="string">"p-4 border rounded-lg"</span>&gt;
+      &lt;<span class="tag">h2</span> className=<span class="string">"text-xl font-bold mb-4"</span>&gt;Fights Counter&lt;/<span class="tag">h2</span>&gt;
+      &lt;<span class="tag">p</span> className=<span class="string">"mb-2"</span>&gt;Fight Club Fights Count: {count}&lt;/<span class="tag">p</span>&gt;
+      &lt;<span class="tag">button</span> 
+        onClick={handleClick}
+        className=<span class="string">"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"</span>
+      &gt;
+        Increment
+      &lt;/<span class="tag">button</span>&gt;
+    &lt;/<span class="tag">div</span>&gt;
+  );
+};</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container reveal">
+        <h2>About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I am a B.Tech graduate specializing in Artificial Intelligence & Data Science. I have strong foundations in Core Java (OOP, Concurrency), Spring Boot, Hibernate, and data structures & algorithms. I enjoy building scalable back-end systems, optimizing performance, and creating clean user experiences on the front end. I am seeking opportunities to work as a Full Stack Developer where I can combine systems thinking with hands-on engineering.
+            </p>
+          </div>
+          <div class="about-photo">
+            <div class="photo-frame">
+              <img src="1image.jpg" alt="Profile Photo" class="profile-img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="skills">
+      <div class="container reveal">
+        <h2>Skills</h2>
+        <div class="skills-grid" id="skills-grid">
+          <div class="hover-highlight" id="hover-highlight"></div>
+          
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>HTML5</h3>
+              <p>Semantic markup, Accessibility, SEO best practices.</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>CSS3</h3>
+              <p>Flexbox, Grid, Animations, Responsive Design.</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>JavaScript</h3>
+              <p>ES6+, DOM Manipulation, Async/Await, APIs.</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>Java</h3>
+              <p>OOP, Concurrency, Streams, Functional Programming.</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>Spring Boot</h3>
+              <p>REST APIs, Dependency Injection, Microservices.</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>Hibernate</h3>
+              <p>ORM, JPA, Database Mapping, Caching.</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>SQL</h3>
+              <p>Database Design, Complex Queries, Optimization.</p>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-content">
+              <h3>Python</h3>
+              <p>Data Analysis, Scripting, Automation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects">
+      <div class="container reveal">
+        <h2>Projects</h2>
+        <div class="tracing-beam-container">
+          <div class="tracing-beam">
+            <div class="tracing-beam-content">
+              <div class="dot"></div>
+              <svg viewBox="0 0 20 100" aria-hidden="true" preserveAspectRatio="none">
+                <path d="M 10 0 V 100" fill="none" stroke="#9091A0" stroke-opacity="0.16" stroke-width="1.25"></path>
+                <path d="M 10 0 V 100" fill="none" stroke="url(#gradient)" stroke-width="1.25" class="motion-path"></path>
+                <defs>
+                  <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="0" y2="1">
+                    <stop stop-color="#38BDF8" stop-opacity="0"></stop>
+                    <stop stop-color="#38BDF8"></stop>
+                    <stop offset="0.325" stop-color="#818CF8"></stop>
+                    <stop offset="1" stop-color="#C084FC" stop-opacity="0"></stop>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <div class="projects-grid" id="projects-content">
+            <!-- Card 1 -->
+            <article class="card">
+              <div class="card-media">Image</div>
+              <div class="card-body">
+                <h3>High-Throughput E-Commerce Microservices</h3>
+                <p>Microservices using Java 17, Spring Boot, Spring Cloud, Hibernate and MySQL optimized for scale and low latency. Implemented caching and concurrency controls.</p>
+                <div class="card-actions">
+                  <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
+                  <a class="btn small ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card">
+              <div class="card-media">Image</div>
+              <div class="card-body">
+                <h3>Distributed Caching & Rate Limiter</h3>
+                <p>Core Java implementation of LRU cache and Token-Bucket rate limiter integrated through a Spring Boot interceptor to protect APIs.</p>
+                <div class="card-actions">
+                  <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
+                  <a class="btn small ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card">
+              <div class="card-media">Image</div>
+              <div class="card-body">
+                <h3>Data Visualization Dashboard</h3>
+                <p>Dashboard with REST APIs and React frontend (placeholder here) to display analytical insights and metrics in real time.</p>
+                <div class="card-actions">
+                  <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
+                  <a class="btn small ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container reveal">
+        <h2>Get in Touch</h2>
+        <div class="contact-container">
+          <div class="contact-form-card">
+            <form id="contact-form" class="modern-form">
+              <div class="input-row">
+                <div class="input-group">
+                  <label for="firstname">First Name</label>
+                  <input id="firstname" type="text" placeholder="Tyler">
+                </div>
+                <div class="input-group">
+                  <label for="lastname">Last Name</label>
+                  <input id="lastname" type="text" placeholder="Durden">
+                </div>
+              </div>
+              <div class="input-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" placeholder="projectmayhem@fc.com">
+              </div>
+              <div class="input-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Your message here..."></textarea>
+              </div>
+              
+              <button class="btn-submit" type="submit">
+                Send Message &rarr;
+                <span class="bottom-gradient"></span>
+              </button>
+
+              <div class="divider"></div>
+
+              <div class="social-buttons">
+                <a href="https://github.com" target="_blank" class="btn-social">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>GitHub</span>
+                  <span class="bottom-gradient"></span>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="btn-social">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  <span>LinkedIn</span>
+                  <span class="bottom-gradient"></span>
+                </a>
+                <a href="mailto:email@example.com" class="btn-social">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>Email</span>
+                  <span class="bottom-gradient"></span>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> ChandraDas.PV — All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://github.com/decode2404" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/chandradas" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
