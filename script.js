@@ -179,32 +179,21 @@ document.addEventListener('DOMContentLoaded', function(){
     updateBeam();
   }
 
-  // Skills Hover Effect
+  // Skills Spotlight Effect
   const skillsGrid = document.getElementById('skills-grid');
-  const highlight = document.getElementById('hover-highlight');
-  const skillCards = document.querySelectorAll('.skill-card');
-
-  if (skillsGrid && highlight) {
-    skillCards.forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        const rect = this.getBoundingClientRect();
-        const gridRect = skillsGrid.getBoundingClientRect();
+  
+  if (skillsGrid) {
+    skillsGrid.addEventListener('mousemove', (e) => {
+      const cards = document.querySelectorAll('.skill-card');
+      
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
         
-        // Calculate position relative to the grid
-        const left = rect.left - gridRect.left;
-        const top = rect.top - gridRect.top;
-        const width = rect.width;
-        const height = rect.height;
-
-        highlight.style.width = `${width}px`;
-        highlight.style.height = `${height}px`;
-        highlight.style.transform = `translate(${left}px, ${top}px)`;
-        highlight.style.opacity = '1';
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
       });
-    });
-
-    skillsGrid.addEventListener('mouseleave', function() {
-      highlight.style.opacity = '0';
     });
   }
 
