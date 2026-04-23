@@ -78,36 +78,55 @@ This project uses vanilla HTML, CSS and JavaScript only. No frameworks.
           </div>
         </div>
         <div class="hero-right">
-          <div class="code-block-wrapper">
-            <div class="code-block-3d">
-              <div class="code-header">
-                <div class="window-controls">
-                  <span class="dot red"></span>
-                  <span class="dot yellow"></span>
-                  <span class="dot green"></span>
+          <!-- 3D CSS Monitor -->
+          <div class="scene-3d">
+            <div class="monitor-wrapper">
+              <div class="monitor-3d">
+                <div class="monitor-frame">
+                  <div class="monitor-screen">
+                    <!-- Code Editor UI Content -->
+                    <div class="code-editor-ui">
+                      <div class="editor-header">
+                        <div class="window-buttons">
+                          <span class="win-btn close"></span>
+                          <span class="win-btn min"></span>
+                          <span class="win-btn max"></span>
+                        </div>
+                        <div class="file-tabs">
+                          <span class="tab active">Backend.java</span>
+                          <span class="tab">Api.java</span>
+                        </div>
+                      </div>
+                      <div class="editor-body">
+                        <div class="line-numbers">
+                          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                        </div>
+                        <div class="code-content-scroll">
+                          <pre><code><span class="kwd">public class</span> <span class="cls">PortfolioController</span> {
+
+  <span class="ano">@Autowired</span>
+  <span class="kwd">private</span> ProjectService service;
+
+  <span class="ano">@GetMapping</span>(<span class="str">"/projects"</span>)
+  <span class="kwd">public</span> List&lt;Project&gt; <span class="fun">getAll</span>() {
+      <span class="cmt">// Fetching latest work...</span>
+      <span class="kwd">return</span> service.findAll()
+            .stream()
+            .filter(Date::nonNull)
+            .collect(Collectors.toList());
+  }
+
+  <span class="cmt">// Coding the future...</span>
+}</code></pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <span class="filename">DummyComponent.jsx</span>
+                <div class="monitor-neck"></div>
+                <div class="monitor-base"></div>
+                <div class="monitor-glow"></div>
               </div>
-              <pre class="code-content"><code><span class="keyword">const</span> <span class="component">DummyComponent</span> = () => {
-  <span class="keyword">const</span> [count, setCount] = React.<span class="function">useState</span>(0);
- 
-  <span class="keyword">const</span> <span class="function">handleClick</span> = () => {
-    <span class="function">setCount</span>(prev => prev + 1);
-  };
- 
-  <span class="keyword">return</span> (
-    &lt;<span class="tag">div</span> className=<span class="string">"p-4 border rounded-lg"</span>&gt;
-      &lt;<span class="tag">h2</span> className=<span class="string">"text-xl font-bold mb-4"</span>&gt;Fights Counter&lt;/<span class="tag">h2</span>&gt;
-      &lt;<span class="tag">p</span> className=<span class="string">"mb-2"</span>&gt;Fight Club Fights Count: {count}&lt;/<span class="tag">p</span>&gt;
-      &lt;<span class="tag">button</span> 
-        onClick={handleClick}
-        className=<span class="string">"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"</span>
-      &gt;
-        Increment
-      &lt;/<span class="tag">button</span>&gt;
-    &lt;/<span class="tag">div</span>&gt;
-  );
-};</code></pre>
             </div>
           </div>
         </div>
@@ -119,14 +138,33 @@ This project uses vanilla HTML, CSS and JavaScript only. No frameworks.
       <div class="container reveal">
         <h2>About Me</h2>
         <div class="about-grid">
-          <div class="about-text">
-            <p>
-              I am a B.Tech graduate specializing in Artificial Intelligence & Data Science. I have strong foundations in Core Java (OOP, Concurrency), Spring Boot, Hibernate, and data structures & algorithms. I enjoy building scalable back-end systems, optimizing performance, and creating clean user experiences on the front end. I am seeking opportunities to work as a Full Stack Developer where I can combine systems thinking with hands-on engineering.
-            </p>
+          <div class="about-content">
+            <div class="about-glass-card">
+              <p>
+                I am a B.Tech graduate specializing in <strong>Artificial Intelligence & Data Science</strong>. I combine strong foundations in Core Java and Spring Boot with a passion for building scalable, high-performance back-end systems.
+              </p>
+              <p>
+                Beyond coding, I focus on optimizing performance and creating clean, intuitive user experiences. I seek opportunities to solve complex engineering challenges as a <strong>Full Stack Developer</strong>.
+              </p>
+              
+              <div class="about-stats">
+                <div class="stat-pill">
+                  <span class="emoji">🎓</span> B.Tech AI/DS
+                </div>
+                <div class="stat-pill">
+                  <span class="emoji">💻</span> Java Full Stack
+                </div>
+                <div class="stat-pill">
+                  <span class="emoji">🚀</span> Problem Solver
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div class="about-photo">
             <div class="photo-frame">
               <img src="1image.jpg" alt="Profile Photo" class="profile-img">
+              <div class="glow-effect"></div>
             </div>
           </div>
         </div>
@@ -138,7 +176,7 @@ This project uses vanilla HTML, CSS and JavaScript only. No frameworks.
       <div class="container reveal">
         <h2>Skills</h2>
         <div class="skills-grid" id="skills-grid">
-          <div class="hover-highlight" id="hover-highlight"></div>
+
           
           <div class="skill-card">
             <div class="skill-content">
@@ -217,10 +255,18 @@ This project uses vanilla HTML, CSS and JavaScript only. No frameworks.
           <div class="projects-grid" id="projects-content">
             <!-- Card 1 -->
             <article class="card">
-              <div class="card-media">Image</div>
+              <div class="card-media">
+                <img src="project-expense.png" alt="Expense Tracker Dashboard UI" class="project-img">
+              </div>
               <div class="card-body">
-                <h3>High-Throughput E-Commerce Microservices</h3>
-                <p>Microservices using Java 17, Spring Boot, Spring Cloud, Hibernate and MySQL optimized for scale and low latency. Implemented caching and concurrency controls.</p>
+                <h3>Expense Tracker Web Application</h3>
+                <p>Client-side app to manage daily expenses with category views and summary calculations. Features responsive UI and REST API integration for real-time synchronization.</p>
+                <div class="card-tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">REST API</span>
+                </div>
                 <div class="card-actions">
                   <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
                   <a class="btn small ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
@@ -230,10 +276,17 @@ This project uses vanilla HTML, CSS and JavaScript only. No frameworks.
 
             <!-- Card 2 -->
             <article class="card">
-              <div class="card-media">Image</div>
+              <div class="card-media">
+                <img src="project-wildlife.png" alt="Wildlife Detection System HUD" class="project-img">
+              </div>
               <div class="card-body">
-                <h3>Distributed Caching & Rate Limiter</h3>
-                <p>Core Java implementation of LRU cache and Token-Bucket rate limiter integrated through a Spring Boot interceptor to protect APIs.</p>
+                <h3>Wild Animal Detection System</h3>
+                <p>AI-IoT system using deep learning to classify wildlife and trigger deterrent sounds. Integrated GPS and APR voice modules for real-time alerts and conflict reduction.</p>
+                <div class="card-tags">
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">Deep Learning</span>
+                  <span class="tag">IoT</span>
+                </div>
                 <div class="card-actions">
                   <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
                   <a class="btn small ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
@@ -243,10 +296,17 @@ This project uses vanilla HTML, CSS and JavaScript only. No frameworks.
 
             <!-- Card 3 -->
             <article class="card">
-              <div class="card-media">Image</div>
+              <div class="card-media">
+                <img src="project-portfolio.png" alt="Modern Portfolio Workspace" class="project-img">
+              </div>
               <div class="card-body">
-                <h3>Data Visualization Dashboard</h3>
-                <p>Dashboard with REST APIs and React frontend (placeholder here) to display analytical insights and metrics in real time.</p>
+                <h3>Personal Portfolio Website</h3>
+                <p>Responsive portfolio showcasing projects and skills. optimized for performance and mobile-first viewing, serving as a central hub for my online professional presence.</p>
+                <div class="card-tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
                 <div class="card-actions">
                   <a class="btn small" href="#" target="_blank" rel="noopener">GitHub</a>
                   <a class="btn small ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
