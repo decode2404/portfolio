@@ -340,23 +340,13 @@ section {
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: 2.5rem; /* Increased from 1.7rem */
   color: var(--accent);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem; /* Increased spacing */
   text-transform: uppercase;
   letter-spacing: 1px;
   text-align: center;
   position: relative;
-}
-
-h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  margin: 0.6rem auto 0;
-  border-radius: 2px;
 }
 
 .reveal {
@@ -373,19 +363,73 @@ h2::after {
 /* About Section Revamp */
 .about-grid {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 4rem;
   align-items: center;
   margin-top: 2rem;
+  position: relative;
 }
 
-.about-text p {
-  font-size: 1.3rem; /* Increased from 1.1rem */
-  color: var(--muted);
+.about-glass-card {
+  background: rgba(30, 41, 59, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.about-glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.about-glass-card p {
+  font-size: 1.15rem;
+  color: #cbd5e1; /* Slate 300 */
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
 
+.about-glass-card strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Stats / Highlights */
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.stat-pill:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Photo Frame */
 .about-photo {
   position: relative;
   display: flex;
@@ -394,28 +438,60 @@ h2::after {
 
 .photo-frame {
   width: 100%;
-  max-width: 350px;
-  height: 400px;
+  max-width: 320px;
+  height: 380px;
   background: var(--navy);
-  border: 1px solid var(--accent);
-  border-radius: 12px;
+  border-radius: 20px;
   position: relative;
-  box-shadow: 20px 20px 0 var(--highlight);
-  transition: transform 0.3s ease;
-  overflow: hidden; /* Ensure image stays inside border radius */
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.02);
+  transition: all 0.5s ease;
+}
+
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, transparent 40%, rgba(56, 189, 248, 0.2) 45%, transparent 50%);
+  z-index: 2;
+  transition: all 0.6s ease;
+  background-size: 200% 100%;
+  background-position: 100% 0;
 }
 
 .photo-frame:hover {
-  transform: translate(-5px, -5px);
-  box-shadow: 25px 25px 0 var(--highlight);
+  transform: scale(1.02) rotate(2deg);
+  box-shadow: 0 20px 50px rgba(56, 189, 248, 0.15);
+  border-color: var(--accent);
+}
+
+.photo-frame:hover::before {
+  background-position: 0 0;
 }
 
 .profile-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures face is visible properly */
-  object-position: center top; /* Focus on face */
+  object-fit: cover;
   display: block;
+}
+
+/* Glow Effect */
+.about-photo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: var(--accent);
+  filter: blur(80px);
+  opacity: 0.15;
+  z-index: 0;
+  border-radius: 50%;
 }
 
 @media (max-width: 768px) {
@@ -425,60 +501,104 @@ h2::after {
   }
   
   .about-photo {
-    order: -1; /* Photo above text on mobile */
-  }
-  
-  .photo-frame {
-    height: 300px;
-    max-width: 100%;
+    order: -1;
   }
 }
 
 /* Skills */
+/* Skills - Spotlight Effect */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  position: relative; /* For absolute positioning of highlight */
   padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .skill-card {
   position: relative;
-  z-index: 2;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02); /* Very subtle base */
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  padding: 2rem;
-  height: 100%;
-  transition: border-color 0.3s ease;
+  padding: 0; /* Padding handled by inner content */
+  height: 280px; /* Fixed height for uniformity */
   cursor: default;
+  overflow: hidden;
+  transition: transform 0.2s;
 }
 
-.skill-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-}
 
-.skill-content h3 {
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem; /* Increased from 1.25rem */
-}
-
-.skill-content p {
-  color: var(--muted);
-  font-size: 1.1rem; /* Increased from 0.95rem */
-  line-height: 1.5;
-}
-
-.hover-highlight {
+/* The Spotlight Border */
+.skill-card::before,
+.skill-card::after {
+  content: "";
   position: absolute;
-  background: var(--navy);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
-  z-index: 1;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
   pointer-events: none;
+  opacity: 1; /* Always active, gradient handles visibility */
+  transition: opacity 0.5s;
+}
+
+/* Border Glow (The Reveal) */
+.skill-card::before {
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.4),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+/* Inner Glow (Subtle Surface Light) */
+.skill-card::after {
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(56, 189, 248, 0.1), /* Slight blue tint */
+    transparent 40%
+  );
+  z-index: 3; /* Above content for subtle tint? No, below */
+  z-index: 2;
+}
+
+/* Create an inner container using mask usually, but inset is fine */
+.skill-content {
+  position: absolute;
+  inset: 1px; /* The border width */
+  background: #0f172a; /* Solid dark background to hide the ::before gradient except at edges */
+  border-radius: 11px;
+  padding: 2.5rem 1.5rem; /* Increased vertical padding */
+  z-index: 2; /* Sit on top of ::before */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text */
+}
+
+/* Hover State - Optional Boost */
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+.skill-card h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-size: 1.8rem; /* Larger title */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); /* Subtle glow */
+}
+
+.skill-card p {
+  color: #94a3b8; /* Lighter slate check */
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 90%; /* Prevent lines touching edges too much */
 }
 
 /* Tracing Beam */
@@ -618,7 +738,7 @@ h2::after {
 
 .card h3 {
   color: var(--accent);
-  font-size: 1.5rem; /* Increased from 1.1rem */
+  font-size: 1.8rem; /* Increased from 1.5rem */
   margin-bottom: 0.5rem;
   position: relative;
   z-index: 2;
@@ -916,81 +1036,215 @@ h1, h2 {
     box-shadow: 0 0 20px rgba(255,0,200,0.9);
 }
 /* 3D Code Block */
-.code-block-wrapper {
+/* 3D Monitor Scene */
+.scene-3d {
   perspective: 1000px;
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.code-block-3d {
-  background: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transform: rotateY(-10deg) rotateX(5deg);
+.monitor-wrapper {
   transform-style: preserve-3d;
+  animation: floatMonitor 6s ease-in-out infinite;
+}
+
+.monitor-3d {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transform: rotateY(-15deg) rotateX(5deg);
+}
+
+/* Monitor Frame */
+.monitor-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1e293b; /* Dark Slate Frame */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
-    20px 20px 50px rgba(0, 0, 0, 0.5),
-    -1px -1px 0 rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
+    inset 0 0 0 2px rgba(0,0,0,0.5), /* Inner bezel shadow */
+    -5px 5px 20px rgba(0,0,0,0.5), /* Drop shadow */
+    0 0 0 2px rgba(56, 189, 248, 0.1); /* Outer glow hint */
+  padding: 12px; /* Bezel thickness */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }
 
-.code-block-3d:hover {
-  transform: rotateY(-5deg) rotateX(2deg) scale(1.02);
+/* Screen Area */
+.monitor-screen {
+  width: 100%;
+  height: 100%;
+  background: #0f172a; /* Deep Navy Screen */
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(0,0,0,1); /* Vignette */
 }
 
-.code-header {
+/* Monitor Stand */
+.monitor-neck {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(-20px);
+  width: 60px;
+  height: 50px;
+  background: linear-gradient(to right, #334155, #1e293b);
+  z-index: 1;
+}
+
+.monitor-base {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%) rotateX(60deg);
+  width: 200px;
+  height: 100px;
+  background: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  z-index: 0;
+}
+
+/* Ambient Glow */
+.monitor-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(-100px);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+/* Animations */
+@keyframes floatMonitor {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) translateZ(-100px) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) translateZ(-100px) scale(1.1); }
+}
+
+/* Code Editor UI */
+.code-editor-ui {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-header {
+  height: 32px;
+  background: #1e293b;
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.5rem;
+  padding: 0 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.window-controls {
+.window-buttons {
   display: flex;
-  gap: 8px;
-  margin-right: 1rem;
+  gap: 6px;
+  margin-right: 15px;
 }
 
-.dot {
-  width: 12px;
-  height: 12px;
+.win-btn {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
 }
+.win-btn.close { background: #ff5f56; }
+.win-btn.min { background: #ffbd2e; }
+.win-btn.max { background: #27c93f; }
 
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
-
-.filename {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
-  color: var(--muted);
+.file-tabs {
+  display: flex;
 }
 
-.code-content {
-  margin: 0;
+.tab {
   font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  color: #64748b;
+  padding: 4px 12px;
+  border-radius: 4px 4px 0 0;
+  margin-right: 2px;
+}
+
+.tab.active {
+  background: #0f172a;
   color: #e2e8f0;
-  overflow-x: auto;
 }
 
-/* Syntax Highlighting Simulation */
-.keyword { color: #c678dd; } /* Purple */
-.function { color: #61afef; } /* Blue */
-.string { color: #98c379; } /* Green */
-.component { color: #e5c07b; } /* Yellow/Gold */
-.tag { color: #e06c75; } /* Red */
+.editor-body {
+  flex: 1;
+  display: flex;
+  padding: 10px 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
 
+.line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  color: #475569;
+  text-align: right;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  user-select: none;
+}
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+.code-content-scroll {
+  flex: 1;
+  padding-left: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.code-content-scroll pre {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  animation: scrollCode 15s linear infinite;
+  color: #94a3b8;
+}
+
+@keyframes scrollCode {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); } /* Ensure code is long enough to loop seamlessly */
+}
+
+/* Syntax Colors */
+.kwd { color: #c678dd; } /* Purple keyword */
+.cls { color: #e5c07b; } /* Yellow class */
+.fun { color: #61afef; } /* Blue function */
+.str { color: #98c379; } /* Green string */
+.ano { color: #d19a66; } /* Orange annotation */
+.cmt { color: #5c6370; font-style: italic; } /* Grey comment */
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .scene-3d {
+    height: 300px;
+    transform: scale(0.8);
+  }
 }
 .hero {
     display: flex;
@@ -1105,49 +1359,46 @@ h1, h2 {
 }
 
 .card-media {
-  height: 300px; /* Increased height */
+  height: 420px; /* Reduced height for better balance */
   overflow: hidden;
 }
 
 .card-body {
-  padding: 1.5rem;
+  padding: 2.5rem; /* Increased padding */
+  height: 420px; /* Matched to card-media */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Align content to top */
+  align-items: flex-start;
+}
+
+.card-actions {
+  margin-top: 0; /* Removed margin-top auto, now handled by tags */
+  width: 100%;
+  display: flex;
+  gap: 1rem;
 }
 
 @media (min-width: 768px) {
   /* Odd Rows: Media Left, Details Right */
-  .card:nth-child(odd) {
+  /* All Rows: Media Left, Details Right */
+  .card:nth-child(n) {
     flex-direction: row;
   }
   
-  .card:nth-child(odd) .card-media {
+  .card:nth-child(n) .card-media {
     transform: translateX(-50px) scale(0.9);
   }
   
-  .card:nth-child(odd) .card-body {
+  .card:nth-child(n) .card-body {
     transform: translateX(50px) scale(0.9);
-    text-align: left; /* Reset text align */
+    text-align: left;
   }
 
-  /* Even Rows: Details Left, Media Right */
-  .card:nth-child(even) {
-    flex-direction: row-reverse;
+  .card:nth-child(n) .card-body .card-actions {
+      justify-content: flex-start;
   }
-  
-  .card:nth-child(even) .card-body {
-    transform: translateX(-50px) scale(0.9);
-    text-align: right;
-  }
-  .card:nth-child(even) .card-body .card-actions {
-      justify-content: flex-end;
-  }
-  
-  .card:nth-child(even) .card-media {
-    transform: translateX(50px) scale(0.9);
-  }
-  
+
   /* Visible State - Animate inner elements */
   .card.card-visible .card-media,
   .card.card-visible .card-body {
@@ -1179,3 +1430,45 @@ h1, h2 {
   box-shadow: 0 10px 28px rgba(100, 255, 218, 0.15);
   border-color: var(--accent);
 }
+
+/* Card Tags */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  margin-top: auto; /* Push tags and buttons to bottom */
+  margin-bottom: 1.5rem; /* Space between tags and buttons */
+  position: relative;
+  z-index: 2;
+}
+
+.tag {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(56, 189, 248, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.1);
+}
+
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .project-img {
+  transform: scale(1.1);
+}
+
